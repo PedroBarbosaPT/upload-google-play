@@ -24,6 +24,12 @@ export interface EditOptions {
     track: string;
     inAppUpdatePriority: number;
     userFraction?: number;
+    status?:
+        | "statusUnspecified"
+        | "draft"
+        | "inProgress"
+        | "halted"
+        | "completed";
     whatsNewDir?: string;
     mappingFile?: string;
     name?: string;
@@ -144,10 +150,14 @@ async function validateSelectedTrack(appEdit: AppEdit, options: EditOptions): Pr
 
 async function addReleasesToTrack(appEdit: AppEdit, options: EditOptions, versionCodes: number[]): Promise<Track> {
     let status: string;
-    if (options.userFraction != undefined) {
-        status = 'inProgress';
+    if (options.status === undefined) {
+        if (options.userFraction != undefined) {
+            status = "inProgress";
+        } else {
+            status = "completed";
+        }
     } else {
-        status = 'completed';
+        status = options.status;
     }
 
     core.debug(`Creating Track Release for Edit(${appEdit.id}) for Track(${options.track}) with a UserFraction(${options.userFraction}) and VersionCodes(${versionCodes})`);

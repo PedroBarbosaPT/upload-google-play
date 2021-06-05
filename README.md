@@ -48,6 +48,11 @@ _Values:_ `[0, 5]`
 
 Portion of users who should get the staged version of the app. Accepts values between 0.0 and 1.0 (exclusive-exclusive). Omitting this value will execute a full rollout.
 
+### `status`
+
+Status of the release. See [Google Play Developers API](https://developers.google.com/android-publisher/api-ref/rest/v3/edits.tracks#Status). If undefined, status will be set based on the presence of `userFraction`. If `userFraction` is defined, status will be set to `completed`. If `userFraction` is undefined, status will be set to `inProgress`.
+_Values:_ `statusUnspecified`, `draft`, `inProgress`, `halted`, `completed`
+
 ### `whatsNewDirectory`
 
 The directory of localized whats new files to upload as the release notes. The files contained in the `whatsNewDirectory` MUST use the pattern `whatsnew-<LOCALE>` where `LOCALE` is using the [`BCP 47`](https://tools.ietf.org/html/bcp47) format, e.g.
