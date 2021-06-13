@@ -113,6 +113,7 @@ async function run() {
             inAppUpdatePriority: inAppUpdatePriorityInt || 0,
             whatsNewDir: whatsNewDir,
             mappingFile: mappingFile,
+            userFraction: userFractionFloat,
             name: releaseName
         }, validatedReleaseFiles);
 
