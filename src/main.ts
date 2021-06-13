@@ -111,7 +111,6 @@ async function run() {
             applicationId: packageName,
             track: track,
             inAppUpdatePriority: inAppUpdatePriorityInt || 0,
-            userFraction: userFractionFloat,
             whatsNewDir: whatsNewDir,
             mappingFile: mappingFile,
             name: releaseName
